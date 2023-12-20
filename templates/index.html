@@ -66,9 +66,13 @@
         <p>Thank you for visiting our website. We are excited to have you here!</p>
         <p>This a website to predict the income of an individual.</p> 
         <p>The machine learning model is based on UCI Census Income Dataset.</p>
-        <a href="{{ url_for('predict') }}">Go to Prediction Page</a>
+        <button onclick="startPrediction()">START PREDICTION</button>
     </main>
 
-
+    <script>
+        function startPrediction() {
+            window.location.href = "{{ url_for('predict') }}";
+        }
+    </script>
 </body>
 </html>

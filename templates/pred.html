@@ -104,12 +104,13 @@
         <h1>Income Prediction Form</h1>
     </header>
 
-    <form action="{{ url_for('predict')}}" method="post"></formaction>
+    <form action="{{ url_for('predict')}}" method="post">
         <label for="age">Age:</label>
-        <input type="number" id="age" name="age" min="1" max="100" required>
+        <input type="number" placeholder="Enter your age" id="age" name="age" min="1" max="100" required>
 
         <label for="workclass">Workclass:</label>
         <select id="workclass" name="workclass" required>
+            <option value="" disabled selected>Select Workclass</option>
             <option value="private">Private</option>
             <option value="Self-emp-not-inc">Self-emp-not-inc</option>
             <option value="Self-emp-inc">Self-emp-inc</option>
@@ -125,11 +126,11 @@
         </select>
 
         <label for="education-num">Education Number:</label>
-        <input type="number" id="education-num" name="education-num" min="1" max="12" required>
+        <input type="number" placeholder="Enter your education-num" id="education-num" name="education-num" min="1" max="12" required>
 
         <label for="marital-status">Marital Status:</label>
         <select id="marital-status" name="marital-status" required>
-            
+            <option value="" disabled selected>Select Marital Status</option>
             <option value="Married-civ-spouse">Married-civ-spouse</option>
             <option value="Married-AF-spouse">Married-AF-spouse</option>
             <option value="Married-spouse-absent">Married-spouse-absent</option>
@@ -143,6 +144,7 @@
 
         <label for="occupation">Occupation:</label>
         <select id="occupation" name="occupation" required>
+            <option value="" disabled selected>Select Occupation</option>
             <option value="Armed-Forces">Armed-Forces</option>
             <option value="Tech-support">Tech-support</option>
             <option value="Exec-managerial">Exec-managerial</option>
@@ -164,6 +166,7 @@
 
         <label for="relationship">Relationship:</label>
         <select id="relationship" name="relationship"  onchange="updateGenderDropdown()" required>
+            <option value="" disabled selected>Select Relationship</option>
             <option value="Husband">Husband</option>
             <option value="Wife">Wife</option>
             <option value="Unmarried">Unmarried</option>
@@ -176,6 +179,7 @@
 
         <label for="race">Race:</label>
         <select id="race" name="race" required>
+            <option value="" disabled selected>Select Race</option>
             <option value="White">White</option>
             <option value="Black">Black</option>
             <option value="Asian-Pac-Islander">Asian-Pac-Islander</option>
@@ -186,6 +190,7 @@
 
         <label for="sex">Sex:</label>
         <select id="sex" name="sex" required>
+            <option value="" disabled selected>Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <!-- Add more options as needed -->
@@ -193,16 +198,17 @@
         </select>
 
         <label for="capital-gain">Capital Gain:</label>
-        <input type="number" id="capital-gain" name="capital-gain" required>
+        <input type="number" placeholder="Enter your capital-gain" id="capital-gain" name="capital-gain" required>
 
         <label for="capital-loss">Capital Loss:</label>
-        <input type="number" id="capital-loss" name="capital-loss" required>
+        <input type="number" placeholder="Enter your capital-loss" id="capital-loss" name="capital-loss" required>
 
         <label for="hours-per-week">Hours per Week:</label>
-        <input type="number" id="hours-per-week" name="hours-per-week" min="1" max="168" required>
+        <input type="number" placeholder="Enter hours-per-week worked" id="hours-per-week" name="hours-per-week" min="1" max="168" required>
 
         <label for="native-country">Native Country:</label>
         <select id="native-country" name="native-country" required>
+            <option value="" disabled selected>Select native-country</option>
             <option value="United-States">United States</option>
             <option value="Cuba">Cuba</option>
             <option value="Jamaica">Jamaica</option>
@@ -250,8 +256,13 @@
 
         </select>
 
-        <button type="submit">Predict Income</button>
-        <h2>{{results}}</h2>
+        <button type="submit" class="btn btn-outline-success" style="font-size: 1.5em">PREDICT</button>
+        {% if request.method == 'POST' %}
+        <div class="card text-bg-success mb-2 mt-2 " style="width: 60%; margin-left: 88px">
+            <div class="card-body">
+              <h5 class="card-title" style="font-size: 1.5em;">INCOME {{results}}</h5>
+        </div>
+        {% endif %}
     </form>
     
 </body>
